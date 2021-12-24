@@ -24,7 +24,7 @@ let checkValue = (btnPush) => {
         checkNumberButton();
         checkExistingButtonLatestResearch(genre.value) ? console.log("Already exist") : createInsertButtonLatestResearch(genre.value);
         
-        callAPISubject(subject + genre.value.toLocaleLowerCase() +".json", btnPush);
+        callAPISubject(subject + genre.value +".json", btnPush);
     }
 }
 
@@ -33,7 +33,7 @@ let latestResearch = (btnPush) => {
     btnPush.querySelector("span").classList.remove("d-none");
     removeElementTable();
     
-    callAPISubject(subject + btnPush.textContent.toLocaleLowerCase() +".json", btnPush);
+    callAPISubject(subject + btnPush.textContent +".json", btnPush);
 }
 
 // End section search
@@ -42,8 +42,7 @@ let latestResearch = (btnPush) => {
 // Call API
 
 let callAPISubject = async(genre, btn) =>{
-    const response = await fetch(URL + genre);
-    //const response = await fetch("https://openlibrary.org/subjects/fantasy.json");
+    const response = await fetch(URL + genre.toLowerCase());
     response.ok == true ? populateTable(await response.json()) : errorCallApi(response, btn);
 
     document.querySelectorAll("button").forEach((btn)=> btn.disabled = false);
@@ -144,7 +143,7 @@ let createInsertButtonLatestResearch = (searchName) =>{
 let checkExistingButtonLatestResearch = (searchName) => {
     let exist = false;
     document.querySelectorAll("#latestResearch > button[type='latestResearch']").forEach((button) =>{
-        button.textContent.toLocaleLowerCase() == searchName ? exist = true : "";
+        button.textContent.toLowerCase() == searchName.toLowerCase() ? exist = true : "";
     });
     return exist;
 }
