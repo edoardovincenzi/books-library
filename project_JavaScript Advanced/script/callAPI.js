@@ -24,7 +24,7 @@ let checkValue = (btnPush) => {
         checkNumberButton();
         checkExistingButtonLatestResearch(genre.value) ? console.log("Already exist") : createInsertButtonLatestResearch(genre.value);
         
-        callAPISubject(subject + genre.value +".json", btnPush);
+        callAPISubject(subject + genre.value.toLocaleLowerCase() +".json", btnPush);
     }
 }
 
@@ -33,7 +33,7 @@ let latestResearch = (btnPush) => {
     btnPush.querySelector("span").classList.remove("d-none");
     removeElementTable();
     
-    callAPISubject(subject + btnPush.textContent +".json", btnPush);
+    callAPISubject(subject + btnPush.textContent.toLocaleLowerCase() +".json", btnPush);
 }
 
 // End section search
@@ -42,9 +42,7 @@ let latestResearch = (btnPush) => {
 // Call API
 
 let callAPISubject = async(genre, btn) =>{
-    const urlFetch = URL + genre;
-    console.log(urlFetch);
-    const response = await fetch(urlFetch);
+    const response = await fetch(URL + genre);
     //const response = await fetch("https://openlibrary.org/subjects/fantasy.json");
     response.ok == true ? populateTable(await response.json()) : errorCallApi(response, btn);
 
