@@ -42,8 +42,10 @@ let latestResearch = (btnPush) => {
 // Call API
 
 let callAPISubject = async(genre, btn) =>{
-    //const response = await fetch(URL + genre)
-    const response = await fetch("https://openlibrary.org/subjects/fantasy.json");
+    const urlFetch = URL + genre;
+    console.log(urlFetch);
+    const response = await fetch(urlFetch);
+    //const response = await fetch("https://openlibrary.org/subjects/fantasy.json");
     response.ok == true ? populateTable(await response.json()) : errorCallApi(response, btn);
 
     document.querySelectorAll("button").forEach((btn)=> btn.disabled = false);
