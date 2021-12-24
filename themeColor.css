@@ -1,0 +1,22 @@
+:root {
+    --black: #121212;
+    --blackSecondary: #1E1E1E;
+    --textWhite: #e0e0e0;
+  
+    --white: #e0e0e0;
+    --whiteSecondary: #e0e0e0;
+    --textBlack: #383838;
+  }
+  
+  .light{
+    --primary: var(--white);
+    --secondary: var(--whiteSecondary);
+    --text: var(--textBlack);
+  }
+  
+  .dark{
+    --primary: var(--black);
+    --secondary: var(--blackSecondary);
+    --text: var(--textWhite);
+  }
+  

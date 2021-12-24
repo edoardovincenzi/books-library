@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!--Bootstrap 5-->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  
+  <link href="style.css" rel="stylesheet">
+  <link href="themeColor.css" rel="stylesheet">
+  <script type="text/javascript" defer="" src="javascript.js"></script>
+</head>
+<body class="light"> 
+
+  <span>
+    <a id="changeTheme">
+      <img class="themeIcon themeIcon" src="img/iconTheme.svg" onclick="changeTheme()"></img>
+    </a>
+  </span>
+
+  <header>
+    <h1 class="text-center">We love books</h1>
+  </header>
+  <main class="d-flex flex-column align-items-center">
+
+    <!-- Search -->
+    <section class="w-100 mb-5 d-flex justify-content-center">
+      <div class="w-inputSeach position-relative">
+        <input type="text" class="form-control w-100" id="genre" placeholder="Insert genre here">
+        <div class="invalid-feedback position-absolute" id="invalidFeedback">
+          Please enter a genre in the textarea.
+        </div>
+      </div>
+      <button class="btn btn-primary ms-2" onclick="checkValue(this)">
+        <span id="spinner" class="spinner-grow spinner-grow-sm d-none" role="status" aria-hidden="true"></span>
+        Search
+      </button>
+    </section> 
+    
+    <section id="latestResearch" class="mb-5">
+      <h3 class="text-center">Latest research</h3>
+      <button class="btn btn-primary ms-2 d-none" type="templateButtonLatestResearch" onclick="latestResearch(this)"><span id="spinner" class="spinner-grow spinner-grow-sm d-none" role="status" aria-hidden="true"></span>Template button</button>
+    </section>
+
+    <!-- End Search -->
+    
+
+    <!-- Table -->
+    <table class="table table-striped w-75 d-none">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">TITLE</th>
+          <th scope="col">AUTHOR</th>
+          <th scope="col">DESCRIPTION</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+      </tbody>
+    </table>
+    <!-- End table -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="descriptionModal" tabindex="-1" aria-labelledby="descriptionModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="descriptionModalLabel">Description of the book </h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p id="textModal">
+
+            </p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End modal -->
+  </main>
+  <footer>
+
+  </footer>
+</body>
+</html>
