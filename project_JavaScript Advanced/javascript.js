@@ -42,19 +42,18 @@ let latestResearch = (btnPush) => {
 // Call API
 
 let callAPISubject = async(genre, btn) =>{
-    const response = await fetch(URL + genre.toLowerCase());
-    response.ok == true ? populateTable(await response.json()) : errorCallApi(response, btn);
+    await fetch(URL + genre.toLowerCase())
+    .then(response => response.ok == true ? response.json() : errorCallApi(response, btn))
+    .then(data => populateTable(data))
 
     document.querySelectorAll("button").forEach((btn)=> btn.disabled = false);
     btn.querySelector("span").classList.add("d-none");
 }
 
 let callAPIDescription = async(bookKey) =>{
-    const response = await fetch(URL + bookKey)
-    response.ok == true ? "": errorCallApi(response, btn);
-
-    const data = await response.json();
-    document.querySelector("#textModal").textContent = data.description.value ?? data.description;
+    await fetch(URL + bookKey)
+    .then(response => response.ok == true ? response.json() : errorCallApi(response))
+    .then(data => document.querySelector("#textModal").textContent = data.description.value ?? data.description)
 }
 
 let errorCallApi = (response, btn) => {
