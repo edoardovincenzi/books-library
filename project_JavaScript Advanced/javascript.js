@@ -117,9 +117,10 @@ let createButtonDescription = (keyBook, bookName) =>{
     buttonDescription.textContent = "Description";
     buttonDescription.classList.add("btn", "btn-primary", "ms-2");
     buttonDescription.setAttribute("key", keyBook);
+    buttonDescription.setAttribute("type", "button");
     buttonDescription.setAttribute("bookName", bookName);
-    buttonDescription.setAttribute("data-bs-toggle", "modal");
-    buttonDescription.setAttribute("data-bs-target", "#descriptionModal");
+    buttonDescription.setAttribute("data-mdb-toggle", "modal");
+    buttonDescription.setAttribute("data-mdb-target", "#descriptionModal");
     return buttonDescription;
 }
 
