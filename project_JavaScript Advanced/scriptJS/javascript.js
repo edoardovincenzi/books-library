@@ -11,6 +11,7 @@ const timeout = 5000;
 
 let checkValue = (btnPush) => {
     event.preventDefault();
+    genre.value = genre.value.replaceAll(' ', '').toLowerCase();
     if(genre.value === ""){
         invalidFeedback.textContent = "Please enter a genre in the textarea.";
         genre.classList.add("is-invalid");
@@ -39,35 +40,7 @@ let latestResearch = (btnPush) => {
 // End section search
 
 
-// Call API
 
-let callAPISubject = async(genre, btn) =>{
-    await fetch(URL + genre.toLowerCase())
-    .then(response => response.ok == true ? response.json() : errorCallApi(response, btn))
-    .then(data => populateTable(data))
-
-    document.querySelectorAll("button").forEach((btn)=> btn.disabled = false);
-    btn.querySelector("span").classList.add("d-none");
-}
-
-let callAPIDescription = async(bookKey) =>{
-    await fetch(URL + bookKey)
-    .then(response => response.ok == true ? response.json() : errorCallApi(response))
-    .then(data => document.querySelector("#textModal").textContent = data.description.value ?? data.description)
-}
-
-let errorCallApi = (response, btn) => {
-    console.log(response);
-    if(btn){
-        document.querySelectorAll("button").forEach((btn)=> btn.disabled = false);
-        btn.querySelector("span").classList.add("d-none");
-        invalidFeedback.textContent = "Failure API call, check console!";
-        genre.classList.add("is-invalid");
-        removeIsInvalid(genre);
-    }
-}
-
-// End call API
 
 
 // Section creation and population
