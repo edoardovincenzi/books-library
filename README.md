@@ -54,7 +54,7 @@ ITA
 
 ![schermata](https://user-images.githubusercontent.com/85701416/147369592-191c3357-1221-4b26-bc88-e50642a5dfce.png)
 
-[Web page](https://vigilant-edison-be6acb.netlify.app)
+[Web page](https://start2impactprojectjavascript.netlify.app)
 
 ## Version
 
