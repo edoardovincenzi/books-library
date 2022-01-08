@@ -46,7 +46,7 @@ let populateTable = (jsonResponse) => {
     createRow(
       _.get(element, "title", "Title not found"),
       _.get(element, "authors", "Authors not found"),
-      _.get(element, "keyse", "-1"),
+      _.get(element, "key", "-1"),
       index
     );
   });
